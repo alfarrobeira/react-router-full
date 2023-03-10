@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { getStudents } from "../services/utils";
+import BackButton from "./BackButton";
 
 export default () => {
     const [students, setStudents] = useState([]);
@@ -12,12 +14,11 @@ export default () => {
     return (
         <>
             <h2>Students</h2>
-            <ul>
                 {
                     //students.map(student => console.log(student))
-                    students.map(student => <li><a href={`/students/${student.login.uuid}`}> {student.name.title} {student.name.first} {student.name.last} </a></li>)
+                    students.map(student => <div><Link className="link" to={`/students/${student.login.uuid}`}> {student.name.title} {student.name.first} {student.name.last} </Link></div>)
                 }
-            </ul>
+            <BackButton />
         </>
     );
 }

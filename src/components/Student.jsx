@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleStudent } from "../services/utils";
+import BackButton from "./BackButton";
 
 export default () => {
+    // rem: use empty object instead of null for initialisation
     const [student, setStudent] = useState(null);
+    // rem: evaluation of loading is required - otherwise access to null in return statement gives an error
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
 
@@ -38,6 +41,7 @@ export default () => {
                         </div >
                         <div className="imageContainer">
                             <img src={student.picture.large} alt={`${student.name.first} ${student.name.last}`} />
+                            <BackButton />
                         </div>
                     </div >
                 )

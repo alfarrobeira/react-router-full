@@ -43,7 +43,7 @@ a.link {
   font-weight: bold;
   border: 2px solid cornflowerblue;
   padding: 5px 10px;
-  margin: 0 5px;
+  margin: 0.3em 0;
   display: inline-block;
   border-radius: 3px;
 }
@@ -57,6 +57,11 @@ a.help {
 
 a.active {
   color: white;
+}
+
+.backButton {
+  margin: 1em auto 0 auto;
+  padding: 0.3em 1em;
 }
 
 .container {
@@ -77,4 +82,7 @@ a.active {
 
 .imageContainer {
   margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
