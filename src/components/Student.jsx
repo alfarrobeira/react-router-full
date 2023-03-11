@@ -4,14 +4,17 @@ import { getSingleStudent } from "../services/utils";
 import BackButton from "./BackButton";
 
 export default () => {
-    // rem: use empty object instead of null for initialisation
+    // rem: use empty object instead of null for initialisation (to avoid errors before complete loading before rendering)
     const [student, setStudent] = useState(null);
     // rem: evaluation of loading is required - otherwise access to null in return statement gives an error
     const [loading, setLoading] = useState(true);
+    // gets teh id param from the URL
     const { id } = useParams();
 
+    // Please note: the randomuser API works in a way that for every new request, just any data is returned.
+    // --> for the same UUID different data will be returned on subsequent requests
+
     useEffect(() => {
-        //console.log("UUID: " + id);
         setLoading(true);
         getSingleStudent(id).then(studi => {
             setStudent(studi);
@@ -19,6 +22,8 @@ export default () => {
         });
     }, [id])
 
+    // conditional rendering
+    // rem: jsx does not support "if" statement; either ternary operator or boolean evaluation is to be used
     return (
         <>
             {loading ?
